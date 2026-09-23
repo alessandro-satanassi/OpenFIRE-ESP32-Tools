@@ -243,9 +243,14 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: var(--card-lift);
-            animation: fadeInUP 0.6s ease-out forwards;
-            opacity: 0;
-            transform: translateY(20px);
+            /* Lo stato di riposo e' il pannello visibile: se l'animazione non
+               parte (browser che la rifiuta, nome dei fotogrammi cambiato per
+               sbaglio) il contenuto resta comunque leggibile. "backwards" fa
+               valere il primo fotogramma gia' durante il ritardo, quindi la
+               comparsa a schermo e' identica a prima. */
+            animation: fadeInUP 0.6s ease-out backwards;
+            opacity: 1;
+            transform: none;
         }
 
         /* I ritardi sono legati ai pannelli, non alla loro posizione fra i fratelli:
@@ -254,6 +259,10 @@
         .panel ~ .panel { animation-delay: 0.2s; }
 
         @keyframes fadeInUP {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
