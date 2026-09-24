@@ -385,6 +385,29 @@
             text-decoration: underline;
         }
 
+        /* Avviso di compatibilita': dice a quale serie di firmware serve questa App.
+           Centrato, con il triangolo di allerta, sui colori d'avviso della pagina. */
+        .compat-warning {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 18px 0 6px;
+            padding: 12px 16px;
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .compat-warning .icon {
+            width: 22px; height: 22px;
+            color: var(--warning-border);
+            stroke-width: 2;
+        }
+
         /* Web Flasher Section - il pulsante e' dell'azzurro del titolo del pannello,
            lo stesso del pulsante principale del Web Flasher: i due si somigliano. */
         .flasher-btn {
@@ -616,6 +639,18 @@
             <h2 class="panel-title" data-i18n="appPanelTitle">OpenFIRE Companion App (Nightly Builds)</h2>
             <span class="version-badge" data-i18n="appVersionBadge">Updated to commit edefe2c (June 1, 2026)</span>
         </div>
+
+        <!-- Con quale firmware funziona questa App. Il testo sta in uno <span>: la
+             traduzione riscrive l'innerHTML dell'elemento che porta data-i18n, e
+             sull'involucro cancellerebbe l'icona. -->
+        <div class="compat-warning" role="note">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+                <line x1="12" y1="9.5" x2="12" y2="13.5"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span data-i18n="appPanelWarning">WARNING: this version works only with firmware of the 6.x series</span>
+        </div>
         
         <p data-i18n="appPanelDesc">Download the latest pre-compiled binaries of the OpenFIRE App to configure your lightgun, calibrate the camera, and test inputs. <i>(⚡ Portable Apps: no installation required. Just extract or run the executable.)</i></p>
 
@@ -702,6 +737,7 @@
             mainSubtitle: "The ultimate toolkit to configure and flash your wireless lightgun.",
             appPanelTitle: "OpenFIRE App (Official)",
             appVersionBadge: "updated on July 24, 2026 - Commit 8708120",
+            appPanelWarning: "WARNING: this version works only with firmware of the 6.x series",
             appPanelDesc: "Download the latest precompiled executables of the OpenFIRE App to configure the lightgun, calibrate the camera, test the buttons and the components. <i>(Portable Apps: no installation required. Just extract and run the executable.)</i>",
             linuxTip: "💡 Linux tip: Remember to make the .AppImage file executable (Right-click > Properties > Allow executing file as program) before running it.",
             disclaimerText: "These builds are extracted directly from the latest temporary Action artifacts of the original ",
@@ -729,6 +765,7 @@
             mainSubtitle: "La raccolta di strumenti per flashare e configurare la tua lightgun wireless.",
             appPanelTitle: "OpenFIRE App (Ufficiale)",
             appVersionBadge: "aggiornata al 24 luglio 2026 - Commit 8708120",
+            appPanelWarning: "ATTENZIONE: questa versione funziona solo con i firmware della serie 6.x",
             appPanelDesc: "Scarica gli eseguibili precompilati aggiornati dell'App OpenFIRE per configurare la lightgun, calibrare la telecamera, testare i pulsanti ed i componenti. <i>(Portable App: nessuna installazione richiesta. Estrai ed avvia l'eseguibile.)</i>",
             linuxTip: "💡 Suggerimento Linux: Ricorda di rendere il file .AppImage eseguibile (Tasto destro > Proprietà > Permetti l'esecuzione) prima di aprirlo.",
             disclaimerText: "Queste build sono estratte direttamente dagli ultimi artefatti temporanei delle GitHub Actions del progetto originale ",
